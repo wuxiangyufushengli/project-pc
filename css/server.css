@@ -1,15 +1,19 @@
 body, html {
-    height: 100%;
-    background-color: #FBF8F8;
+    height: 100%
 }
 body{
+    background-color:#FBF8F8;
     color: #333;
     font: 14px/1.14 "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma, arial, simsun, "宋体"
 }
 .header {
+    z-index: 100;
+    position: fixed;
+    opacity: 0.95;
     width: 100%;
     background: #fff;
     border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 100px;
 }
 .sticky-wrapper{
     height: 71px;
@@ -41,11 +45,48 @@ body{
     vertical-align: middle;
 }
 
-.navbar-default.navbar-transparent .navbar-nav > li > a, .navbar-default.navbar-transparent .navbar-text {
-    background-color: transparent;
-    color: #121212;
 
+
+
+.sticky-wrapper .navbar-default .navbar-nav >li> a:hover{
+    color: red;
 }
+.sticky-wrapper .navbar-default .navbar-nav > li>.shanghu:hover{
+    color: white;!important;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: red;
+    background-color: white;
+}
+
+
+.navbar-collapse .shanghu-right {
+    float: right;
+}
+.full_banner .bd li {
+    width: 100% !important;
+    float: left;
+    height: 420px;
+    overflow: hidden;
+    text-align: center;
+}
+.navbar-nav .shanghu-right .shanghu:hover{
+    border-radius: 5px;
+    padding: 4px 6px !important;
+    background-color:#E94840;!important;
+    margin-top:22px;
+    margin-left: 15px;
+    color:white;!important;
+}
+.navbar-nav .shanghu-right .shanghu{
+    border-radius: 5px;
+    padding: 4px 6px !important;
+    background-color:#E94840;!important;
+    margin-top:22px;
+    margin-left: 15px;
+    color:white;!important;
+}
+
 body, ul, li, i {
     list-style: none;
     font-style: normal;
@@ -72,12 +113,14 @@ body, ul, li, i {
     margin: 0 auto;
     font-size: 18px;
     font-weight: bold;
-
+    position: relative;
+    top:100px
 }
 .service-center {
     width: 1200px;
     margin: 0 auto;
     position: relative;
+    top:100px
 }
 .centerleft {
     width: 970px;
