@@ -563,3 +563,6 @@ dd {
     color: #fb474f;
 }
 
+.boxtab :hover{
+    background-color: #fbf8f8;
+}

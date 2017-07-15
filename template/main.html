@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap </title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <style type="text/css">
-
-    </style>
-</head>
-<body>
-<header class="header" class="transparent">
-    <div class="sticky-wrapper">
+<header class="header" class="transparent" >
+    <div class="sticky-wrapper" >
         <nav class="navbar navbar-default navbar-transparent" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -37,7 +19,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a href="/">
+                            <a ui-sref="main" >
                                 首页
                             </a>
                         </li>
@@ -47,7 +29,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="./server.html" ref="">服务商</a>
+                            <a  ui-sref="server()">服务商</a>
                         </li>
                         <li>
                             <a href="/information">商家入驻</a>
@@ -58,7 +40,7 @@
                             </a>
                         </li>
                         <li class="shanghu-right" style="margin-right:10px;">
-                            <a id="shanghu" class="shanghu">
+                            <a id="shanghu" class="shanghu" ui-sref="login()">
                                 商家登录
                             </a>
                         </li>
@@ -98,18 +80,19 @@
         </div>
         <div class="banner-nav">
             <div style="width: 180px; position: absolute; left: 100px;" class="nav">
-                <ul>
-                    <li class="navname">
-                        <a>家庭保洁</a>
+                <ul class="firstmenue">
+                    <li class="navname" ng-repeat="project in projects">
+                        <a>{{project.name}}</a>
 
                         <img src="pcimages/right.png" width="6" height="11" class="art1">
                         <img src="pcimages/icon1.png" width="6" height="11" class="art2">
                         <ul class="navnameshow">
 
-                            <li><a href="/fuwu?category=20&amp;CName=%E5%B0%8F%E6%97%B6%E5%B7%A5"
-                                   target="_blank">小时工</a></li>
+                            <li ng-repeat="project1 in project.projectlist">
+                                <a href="/fuwu?category=20&amp;CName=%E5%B0%8F%E6%97%B6%E5%B7%A5"
+                                   target="_blank" >{{project1.name}}</a></li>
 
-                            <li><a href="/fuwu?category=20&amp;CName=%E5%BC%80%E8%8D%92%E4%BF%9D%E6%B4%81"
+                       <!--     <li><a href="/fuwu?category=20&amp;CName=%E5%BC%80%E8%8D%92%E4%BF%9D%E6%B4%81"
                                    target="_blank">开荒保洁</a></li>
 
                             <li><a href="/fuwu?category=20&amp;CName=%E6%93%A6%E7%8E%BB%E7%92%83"
@@ -123,10 +106,10 @@
 
                             <li><a href="/fuwu?category=20&amp;CName=%E6%9D%80%E8%99%AB%E7%81%AD%E9%BC%A0"
                                    target="_blank">杀虫灭鼠</a></li>
-
+-->
                         </ul>
                     </li>
-                    <li class="navname">
+                    <!--<li class="navname">
                         <a>上门按摩</a>
                         <img src="pcimages/right.png" width="6" height="11" class="art1">
                         <img src="pcimages/icon1.png" width="6" height="11" class="art2">
@@ -337,7 +320,7 @@
                             <li><a href="/fuwu?category=60&amp;CName=%E9%AA%8C%E8%BD%A6" target="_blank">验车</a></li>
 
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </div>
@@ -345,78 +328,25 @@
 
 
 </div>
-<div class="box1">
+<div class="box1"  ng-repeat="project in projects">
     <div class="fff">
         <div class="servicebody">
-            <div class="navigation"><span class="serviceIndex">家庭保洁</span><span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
+            <div class="navigation"><span class="serviceIndex">{{project.name}}</span><span class="serviceType">{{project.projects2[0]+'/'+project.projects2[1]+'/'+project.projects2[2]+'/'+project.projects2[3]+'/'+project.projects2[4]+'/'+project.projects2[5]}}</span>
             </div>
             <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><a href="/fuwu?category=20"
-                                                                      style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
+                <div class="tagsListHeader">
+                    <span class="lookMore"><a href="/fuwu?category=20" style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
                 </div>
-                <div class="row server-row">
-                   <a class="form-group shopList">
-                         <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                 src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg"
-                                 class="serviceImg" width="210px" height="210px">
-                             <div class="serviceName">家庭保洁</div>
-                             <div class="description">服务内容：
-                                 家庭保洁服务，2小时起订。（云家政暂时不提供带保...
-                             </div>
-                             <div class="price"><span style="font-size: 20px">30</span>元/小时<span class="btn">查看详情</span>
-                             </div>
-                         </div>
-                     </a>
+                <div class="row">
 
-                     <a class="form-group shopList">
+                    <a class="form-group shopList"  ng-repeat="item in items[0].serviceItem" ui-sref="serverdetail({id:item.id})">
                          <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                 src="http://img.daoway.cn/img/2017/03/22/41491c6c-afd7-449e-9037-e2bf6d72d430_thumb.jpg"
+                                 ng-src="{{item.img}}"
                                  class="serviceImg" width="210px" height="210px">
-                             <div class="serviceName">室内保洁</div>
-                             <div class="description">服务内容：
-                                 1.室内保洁服务，2小时起订，服务商携带清洁装备...
+                             <div class="serviceName">{{item.name}}</div>
+                             <div class="description">{{item.description}}
                              </div>
-                             <div class="price"><span style="font-size: 20px">29</span>元/小时<span class="btn">查看详情</span>
-                             </div>
-                         </div>
-                     </a>
-
-                     <a class="form-group shopList">
-                         <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                 src="http://img.daoway.cn/img/2017/03/22/83a8ce32-cb8e-4256-9059-377b9a7391b3_thumb.jpg"
-                                 class="serviceImg" width="210px" height="210px">
-                             <div class="serviceName">家庭保洁</div>
-                             <div class="description">服务内容：
-                                 1.家庭保洁服务，2小时起订，服务商携带清洁装备...
-                             </div>
-                             <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                             </div>
-                         </div>
-                     </a>
-
-                     <a class="form-group shopList">
-                         <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                 src="http://img.daoway.cn/img/2016/12/19/a71fcfd6-a2b3-43e2-82ea-c1ac4c6150f9_thumb.jpg"
-                                 class="serviceImg" width="210px" height="210px">
-                             <div class="serviceName">金牌保洁＋全屋清洁消毒杀菌</div>
-                             <div class="description">温馨提示：若需要女保洁员请在备注上标明，谢谢
-                                 服务内容：
-                                 1...
-                             </div>
-                             <div class="price"><span style="font-size: 20px">149</span>元/3小时<span
-                                     class="btn">查看详情</span></div>
-                         </div>
-                     </a>
-
-                     <a class="form-group shopList">
-                         <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                 src="http://img.daoway.cn/img/2016/06/29/d6ebc1f0-6364-408c-b3fa-5a899e4eba7a_thumb.jpg"
-                                 class="serviceImg" width="210px" height="210px">
-                             <div class="serviceName">日常保洁 小时工</div>
-                             <div class="description">服务内容：
-                                 日常保洁，2个小时起订，阿姨携带工具包括，毛巾，...
-                             </div>
-                             <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
+                             <div class="price"><span style="font-size: 20px">{{item.price}}</span>元/小时<span class="btn">查看详情</span>
                              </div>
                          </div>
                      </a>
@@ -426,735 +356,8 @@
         </div>
     </div>
 </div>
-<div class="box1">
-    <div class="fff">
-        <div class="servicebody">
-            <div class="navigation"><span class="serviceIndex">家庭保洁</span><span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
-            </div>
-            <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><a href="/fuwu?category=20"
-                                                                      style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
-                </div>
-                <div class="row server-row">
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                家庭保洁服务，2小时起订。（云家政暂时不提供带保...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">30</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
 
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/41491c6c-afd7-449e-9037-e2bf6d72d430_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">室内保洁</div>
-                            <div class="description">服务内容：
-                                1.室内保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">29</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
 
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/83a8ce32-cb8e-4256-9059-377b9a7391b3_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                1.家庭保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/19/a71fcfd6-a2b3-43e2-82ea-c1ac4c6150f9_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">金牌保洁＋全屋清洁消毒杀菌</div>
-                            <div class="description">温馨提示：若需要女保洁员请在备注上标明，谢谢
-                                服务内容：
-                                1...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">149</span>元/3小时<span
-                                    class="btn">查看详情</span></div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/06/29/d6ebc1f0-6364-408c-b3fa-5a899e4eba7a_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">日常保洁 小时工</div>
-                            <div class="description">服务内容：
-                                日常保洁，2个小时起订，阿姨携带工具包括，毛巾，...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="box1">
-    <div class="fff">
-        <div class="servicebody">
-            <div class="navigation"><span class="serviceIndex">家庭保洁</span><span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
-            </div>
-            <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><a href="/fuwu?category=20"
-                                                                      style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
-                </div>
-                <div class="row server-row">
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                家庭保洁服务，2小时起订。（云家政暂时不提供带保...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">30</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/41491c6c-afd7-449e-9037-e2bf6d72d430_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">室内保洁</div>
-                            <div class="description">服务内容：
-                                1.室内保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">29</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/83a8ce32-cb8e-4256-9059-377b9a7391b3_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                1.家庭保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/19/a71fcfd6-a2b3-43e2-82ea-c1ac4c6150f9_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">金牌保洁＋全屋清洁消毒杀菌</div>
-                            <div class="description">温馨提示：若需要女保洁员请在备注上标明，谢谢
-                                服务内容：
-                                1...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">149</span>元/3小时<span
-                                    class="btn">查看详情</span></div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/06/29/d6ebc1f0-6364-408c-b3fa-5a899e4eba7a_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">日常保洁 小时工</div>
-                            <div class="description">服务内容：
-                                日常保洁，2个小时起订，阿姨携带工具包括，毛巾，...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="box1">
-    <div class="fff">
-        <div class="servicebody">
-            <div class="navigation"><span class="serviceIndex">家庭保洁</span><span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
-            </div>
-            <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><a href="/fuwu?category=20"
-                                                                      style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
-                </div>
-                <div class="row server-row">
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                家庭保洁服务，2小时起订。（云家政暂时不提供带保...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">30</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/41491c6c-afd7-449e-9037-e2bf6d72d430_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">室内保洁</div>
-                            <div class="description">服务内容：
-                                1.室内保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">29</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/83a8ce32-cb8e-4256-9059-377b9a7391b3_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                1.家庭保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/19/a71fcfd6-a2b3-43e2-82ea-c1ac4c6150f9_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">金牌保洁＋全屋清洁消毒杀菌</div>
-                            <div class="description">温馨提示：若需要女保洁员请在备注上标明，谢谢
-                                服务内容：
-                                1...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">149</span>元/3小时<span
-                                    class="btn">查看详情</span></div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/06/29/d6ebc1f0-6364-408c-b3fa-5a899e4eba7a_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">日常保洁 小时工</div>
-                            <div class="description">服务内容：
-                                日常保洁，2个小时起订，阿姨携带工具包括，毛巾，...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="box1">
-    <div class="fff">
-        <div class="servicebody">
-            <div class="navigation"><span class="serviceIndex">家庭保洁</span><span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
-            </div>
-            <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><a href="/fuwu?category=20"
-                                                                      style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
-                </div>
-                <div class="row server-row">
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                家庭保洁服务，2小时起订。（云家政暂时不提供带保...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">30</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/41491c6c-afd7-449e-9037-e2bf6d72d430_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">室内保洁</div>
-                            <div class="description">服务内容：
-                                1.室内保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">29</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/83a8ce32-cb8e-4256-9059-377b9a7391b3_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                1.家庭保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/19/a71fcfd6-a2b3-43e2-82ea-c1ac4c6150f9_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">金牌保洁＋全屋清洁消毒杀菌</div>
-                            <div class="description">温馨提示：若需要女保洁员请在备注上标明，谢谢
-                                服务内容：
-                                1...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">149</span>元/3小时<span
-                                    class="btn">查看详情</span></div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/06/29/d6ebc1f0-6364-408c-b3fa-5a899e4eba7a_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">日常保洁 小时工</div>
-                            <div class="description">服务内容：
-                                日常保洁，2个小时起订，阿姨携带工具包括，毛巾，...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="box1">
-    <div class="fff">
-        <div class="servicebody">
-            <div class="navigation"><span class="serviceIndex">家庭保洁</span><span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
-            </div>
-            <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><a href="/fuwu?category=20"
-                                                                      style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
-                </div>
-                <div class="row server-row">
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                家庭保洁服务，2小时起订。（云家政暂时不提供带保...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">30</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/41491c6c-afd7-449e-9037-e2bf6d72d430_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">室内保洁</div>
-                            <div class="description">服务内容：
-                                1.室内保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">29</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/83a8ce32-cb8e-4256-9059-377b9a7391b3_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                1.家庭保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/19/a71fcfd6-a2b3-43e2-82ea-c1ac4c6150f9_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">金牌保洁＋全屋清洁消毒杀菌</div>
-                            <div class="description">温馨提示：若需要女保洁员请在备注上标明，谢谢
-                                服务内容：
-                                1...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">149</span>元/3小时<span
-                                    class="btn">查看详情</span></div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/06/29/d6ebc1f0-6364-408c-b3fa-5a899e4eba7a_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">日常保洁 小时工</div>
-                            <div class="description">服务内容：
-                                日常保洁，2个小时起订，阿姨携带工具包括，毛巾，...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="box1">
-    <div class="fff">
-        <div class="servicebody">
-            <div class="navigation"><span class="serviceIndex">家庭保洁</span><span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
-            </div>
-            <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><a href="/fuwu?category=20"
-                                                                      style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
-                </div>
-                <div class="row server-row">
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                家庭保洁服务，2小时起订。（云家政暂时不提供带保...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">30</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/41491c6c-afd7-449e-9037-e2bf6d72d430_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">室内保洁</div>
-                            <div class="description">服务内容：
-                                1.室内保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">29</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/83a8ce32-cb8e-4256-9059-377b9a7391b3_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                1.家庭保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/19/a71fcfd6-a2b3-43e2-82ea-c1ac4c6150f9_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">金牌保洁＋全屋清洁消毒杀菌</div>
-                            <div class="description">温馨提示：若需要女保洁员请在备注上标明，谢谢
-                                服务内容：
-                                1...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">149</span>元/3小时<span
-                                    class="btn">查看详情</span></div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/06/29/d6ebc1f0-6364-408c-b3fa-5a899e4eba7a_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">日常保洁 小时工</div>
-                            <div class="description">服务内容：
-                                日常保洁，2个小时起订，阿姨携带工具包括，毛巾，...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="box1">
-    <div class="fff">
-        <div class="servicebody">
-            <div class="navigation"><span class="serviceIndex">家庭保洁</span><span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
-            </div>
-            <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><a href="/fuwu?category=20"
-                                                                      style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
-                </div>
-                <div class="row server-row">
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                家庭保洁服务，2小时起订。（云家政暂时不提供带保...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">30</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/41491c6c-afd7-449e-9037-e2bf6d72d430_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">室内保洁</div>
-                            <div class="description">服务内容：
-                                1.室内保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">29</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/83a8ce32-cb8e-4256-9059-377b9a7391b3_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                1.家庭保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/19/a71fcfd6-a2b3-43e2-82ea-c1ac4c6150f9_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">金牌保洁＋全屋清洁消毒杀菌</div>
-                            <div class="description">温馨提示：若需要女保洁员请在备注上标明，谢谢
-                                服务内容：
-                                1...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">149</span>元/3小时<span
-                                    class="btn">查看详情</span></div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/06/29/d6ebc1f0-6364-408c-b3fa-5a899e4eba7a_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">日常保洁 小时工</div>
-                            <div class="description">服务内容：
-                                日常保洁，2个小时起订，阿姨携带工具包括，毛巾，...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="box1">
-    <div class="fff">
-        <div class="servicebody">
-            <div class="navigation"><span class="serviceIndex">家庭保洁</span><span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
-            </div>
-            <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><a href="/fuwu?category=20"
-                                                                      style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
-                </div>
-                <div class="row server-row">
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                家庭保洁服务，2小时起订。（云家政暂时不提供带保...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">30</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/41491c6c-afd7-449e-9037-e2bf6d72d430_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">室内保洁</div>
-                            <div class="description">服务内容：
-                                1.室内保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">29</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/83a8ce32-cb8e-4256-9059-377b9a7391b3_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                1.家庭保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/19/a71fcfd6-a2b3-43e2-82ea-c1ac4c6150f9_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">金牌保洁＋全屋清洁消毒杀菌</div>
-                            <div class="description">温馨提示：若需要女保洁员请在备注上标明，谢谢
-                                服务内容：
-                                1...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">149</span>元/3小时<span
-                                    class="btn">查看详情</span></div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/06/29/d6ebc1f0-6364-408c-b3fa-5a899e4eba7a_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">日常保洁 小时工</div>
-                            <div class="description">服务内容：
-                                日常保洁，2个小时起订，阿姨携带工具包括，毛巾，...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="box1">
-    <div class="fff">
-        <div class="servicebody">
-            <div class="navigation"><span class="serviceIndex">家庭保洁</span><span class="serviceType">小时工/开荒保洁/擦玻璃/深度保洁/家居养护/杀虫灭鼠</span>
-            </div>
-            <div class="servicetags">
-                <div class="tagsListHeader"><span class="lookMore"><a href="/fuwu?category=20"
-                                                                      style="color: #898989; font-size: 18px">更多服务&gt;</a></span>
-                </div>
-                <div class="row server-row">
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/28/5cf8680f-0264-4686-ba05-145700db6063_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                家庭保洁服务，2小时起订。（云家政暂时不提供带保...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">30</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/41491c6c-afd7-449e-9037-e2bf6d72d430_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">室内保洁</div>
-                            <div class="description">服务内容：
-                                1.室内保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">29</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2017/03/22/83a8ce32-cb8e-4256-9059-377b9a7391b3_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">家庭保洁</div>
-                            <div class="description">服务内容：
-                                1.家庭保洁服务，2小时起订，服务商携带清洁装备...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/12/19/a71fcfd6-a2b3-43e2-82ea-c1ac4c6150f9_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">金牌保洁＋全屋清洁消毒杀菌</div>
-                            <div class="description">温馨提示：若需要女保洁员请在备注上标明，谢谢
-                                服务内容：
-                                1...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">149</span>元/3小时<span
-                                    class="btn">查看详情</span></div>
-                        </div>
-                    </a>
-
-                    <a class="form-group shopList">
-                        <div class="col-md-3 col-xs-6 member-container ServiceBorder"><img
-                                src="http://img.daoway.cn/img/2016/06/29/d6ebc1f0-6364-408c-b3fa-5a899e4eba7a_thumb.jpg"
-                                class="serviceImg" width="210px" height="210px">
-                            <div class="serviceName">日常保洁 小时工</div>
-                            <div class="description">服务内容：
-                                日常保洁，2个小时起订，阿姨携带工具包括，毛巾，...
-                            </div>
-                            <div class="price"><span style="font-size: 20px">35</span>元/小时<span class="btn">查看详情</span>
-                            </div>
-                        </div>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="baozhang" id="baozhang">
     <h2>到位<i>服务</i>保障</h2>
     <p>到位平台担保交易安全，交易未成功100%退款</p>
@@ -1179,13 +382,3 @@
     <p>北京邻家科技有限公司 </p>
 </div>
 
-<script src="./js/jquery-1.12.4.js"></script>
-<script src="js/login.js"></script>
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script type="text/javascript">
-
-
-</script>
-</body>
-</html>

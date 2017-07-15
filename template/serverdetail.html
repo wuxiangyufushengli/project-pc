@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap </title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/serverdetail.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <style type="text/css">
-
-    </style>
-</head>
-<body>
-<header class="header" class="transparent">
-    <div class="sticky-wrapper">
+<header class="header" class="transparent" >
+    <div class="sticky-wrapper" >
         <nav class="navbar navbar-default navbar-transparent" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -37,7 +19,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a href="/">
+                            <a ui-sref="main" >
                                 首页
                             </a>
                         </li>
@@ -47,7 +29,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/service">服务商</a>
+                            <a  ui-sref="server()">服务商</a>
                         </li>
                         <li>
                             <a href="/information">商家入驻</a>
@@ -58,7 +40,7 @@
                             </a>
                         </li>
                         <li class="shanghu-right" style="margin-right:10px;">
-                            <a id="shanghu" class="shanghu">
+                            <a id="shanghu" class="shanghu"  ui-sref="login()">
                                 商家登录
                             </a>
                         </li>
@@ -69,18 +51,22 @@
     </div>
 </header>
 <div class="service-center">
-    <h2 class="h2">所有分类<i class="bright">&gt;</i><i id="categoryId">上门按摩</i><i class="bright">&gt;</i><i class="cnav">足疗SPA</i>
+    <h2 class="h2">所有分类<i class="bright">&gt;</i>
+        <i id="categoryId">{{item.name1}}</i>
+        <i class="bright">&gt;</i>
+        <i class="cnav">{{item.nameclass}}</i>
     </h2>
     <div class="centerleft" style="width: 960px">
         <div id="curauto" class="ctop" style="border-top: 1px solid #e5e5e5;">
-            <img class="pic" src="http://img.daoway.cn/img/2016/08/30/cce534a8-1360-487b-8e18-c404b9b71319.jpg"
+            <img class="pic"
+                 ng-src="{{item.img}}"
                  width="160" height="160">
             <span class="spm">
-                <i>招牌Massage</i>
-                <i>价格<b>135<em>元/次</em></b><b class="oldpic" style="display: inline-block">原价<em>168元</em></b></i>
+                <i>{{item.nameclass}}</i>
+                <i>价格<b>{{item.serviceItem[0].price}}<em>元/次</em></b><b class="oldpic" style="display: inline-block">原价<em>{{item.serviceItem[0].oldPrice}}元</em></b></i>
                 <i style="display: none">优惠<em class="youhui" style="display: none"></em><em class="youhui"
                                                                                              style="display: none"></em></i>
-                <i>已售<em class="yishou">2185</em></i>
+                <i>已售<em class="yishou">{{item.serviceItem[0].sales}}</em></i>
             </span>
             <span class="spf">
                 <i id="qrcode">
@@ -91,25 +77,8 @@
         </div>
         <div class="cdown">
             <b>服务描述</b>
-            <p id="servicePriceDescription" innertext="时长：90分钟
-服务姿势：卧姿
-
-适用介绍：
-适用于工作繁忙，精神紧张，没有时间做运动的你。融合中医传统经络和穴位理论创造而成，结合古典泰式手法，对肌肉和关节进行细腻柔和的按摩，无大动作，可以达到静疗运动的效果。调理结束后， 感觉像泥一样柔软放松。
-
-不宜人群：
-高龄者不宜；高血压、心脏病患者不宜；骨折不宜；孕妇、哺乳期、经期不宜。
-
-功效介绍：
-松解黏连，可使黏连的肌筋剥离开；改善肌肉血液循环，促进肌酸等代谢产物的排出；能增加肌肉紧张的代谢产物的溶解度，放松肌肉，解除疲劳；能主动增加关节的活动，使关节更加灵活，达到舒筋活络，滑利关节的作用；能调节人体气血的运行，增加脾胃运动，助消化；全套动作几乎将人体全身按摩一遍，手法轻柔和缓，能调畅情志，使人缓和紧张的情绪。
-
-理疗流程：
-问诊-体诊-诊断-制定方-仰卧位（下肢按摩—腹部按摩—上肢按摩）-俯卧位（背部按摩—下肢按摩）-仰卧位（头部按摩—颈部按摩—肩部按摩）。
-
-用品提供：
-一次性塑封袋内装：口罩1个、轻薄床单1张、按摩巾1张。">时长：90分钟<br>服务姿势：卧姿<br><br>适用介绍：<br>适用于工作繁忙，精神紧张，没有时间做运动的你。融合中医传统经络和穴位理论创造而成，结合古典泰式手法，对肌肉和关节进行细腻柔和的按摩，无大动作，可以达到静疗运动的效果。调理结束后，
-                感觉像泥一样柔软放松。<br><br>不宜人群：<br>高龄者不宜；高血压、心脏病患者不宜；骨折不宜；孕妇、哺乳期、经期不宜。<br><br>功效介绍：<br>松解黏连，可使黏连的肌筋剥离开；改善肌肉血液循环，促进肌酸等代谢产物的排出；能增加肌肉紧张的代谢产物的溶解度，放松肌肉，解除疲劳；能主动增加关节的活动，使关节更加灵活，达到舒筋活络，滑利关节的作用；能调节人体气血的运行，增加脾胃运动，助消化；全套动作几乎将人体全身按摩一遍，手法轻柔和缓，能调畅情志，使人缓和紧张的情绪。<br><br>理疗流程：<br>问诊-体诊-诊断-制定方-仰卧位（下肢按摩—腹部按摩—上肢按摩）-俯卧位（背部按摩—下肢按摩）-仰卧位（头部按摩—颈部按摩—肩部按摩）。<br><br>用品提供：<br>一次性塑封袋内装：口罩1个、轻薄床单1张、按摩巾1张。
-            </p>
+            <p id="servicePriceDescription" >{{item.description.minute}}<br>{{item.description.detail2}}<br><br>{{item.description.detail31}}<br>{{item.description.detail3}}
+                <br><br>{{item.description.detail5}}<br>{{item.description.detail4}}<br><br>
             <b>服务范围</b>
             <p>北京 上海 深圳</p>
             <b>服务时间</b>
@@ -166,11 +135,3 @@
     <p>北京邻家科技有限公司 </p>
 </div>
 
-<script src="js/login.js"></script>
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script type="text/javascript">
-
-</script>
-</body>
-</html>

@@ -48,7 +48,7 @@ body {
     display: none !important;
 }*/
 .lock{
-  width: 16px;
+    width: 16px;
 }
 .input-group {
     margin-bottom: -1px;
@@ -57,3 +57,10 @@ body {
     font-size: 20px;
 }
 
+.container{
+    height: 71px;
+    width: 1200px;
+    margin: 0 auto;
+    line-height:34px;
+
+}
